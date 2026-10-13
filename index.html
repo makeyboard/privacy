@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MAKeyboard · Privacy Policy</title>
+<style>
+:root{
+  --bg:#c9d6dc;--ink:#10232b;--mute:#34505b;--acc:#0b6477;--line:rgba(16,35,43,.14);
+  --shape1:#0e6f84;--shape2:#f0b43c;--shape3:#2c4a63;
+  --g1:rgba(255,255,255,.72);--g2:rgba(255,255,255,.38);
+  --gborder:rgba(255,255,255,.7);--ghi:rgba(255,255,255,.95);--glo:rgba(255,255,255,.25);
+  --gshadow:rgba(12,45,58,.18);
+  --inner1:rgba(255,255,255,.55);--inner2:rgba(255,255,255,.22);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0a1216;--ink:#e6eef0;--mute:#9db4bb;--acc:#5cc3d6;--line:rgba(230,238,240,.14);
+  --shape1:#0e5a6b;--shape2:#a6711a;--shape3:#1f3a52;
+  --g1:rgba(255,255,255,.12);--g2:rgba(255,255,255,.04);
+  --gborder:rgba(255,255,255,.2);--ghi:rgba(255,255,255,.4);--glo:rgba(255,255,255,.06);
+  --gshadow:rgba(0,0,0,.5);--inner1:rgba(255,255,255,.1);--inner2:rgba(255,255,255,.03)}}
+:root[data-theme="dark"]{
+  --bg:#0a1216;--ink:#e6eef0;--mute:#9db4bb;--acc:#5cc3d6;--line:rgba(230,238,240,.14);
+  --shape1:#0e5a6b;--shape2:#a6711a;--shape3:#1f3a52;
+  --g1:rgba(255,255,255,.12);--g2:rgba(255,255,255,.04);
+  --gborder:rgba(255,255,255,.2);--ghi:rgba(255,255,255,.4);--glo:rgba(255,255,255,.06);
+  --gshadow:rgba(0,0,0,.5);--inner1:rgba(255,255,255,.1);--inner2:rgba(255,255,255,.03)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 5rem)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;min-height:100vh}
+html[lang=ar] body{line-height:1.95}
+
+/* flat shapes behind the glass, so the glass has something to bend */
+body::before,body::after{content:"";position:fixed;z-index:-1;pointer-events:none}
+body::before{width:46vmax;height:46vmax;border-radius:50%;background:var(--shape1);top:-14vmax;inset-inline-start:-12vmax}
+body::after{width:30vmax;height:30vmax;border-radius:9vmax;background:var(--shape2);bottom:-8vmax;inset-inline-end:-6vmax;transform:rotate(18deg)}
+.shape3{position:fixed;z-index:-1;pointer-events:none;width:22vmax;height:22vmax;background:var(--shape3);border-radius:50%;top:42vh;inset-inline-end:8vw}
+
+[data-l]{display:none}
+html[lang=en] [data-l=en],html[lang=ar] [data-l=ar]{display:revert}
+
+.glass{
+  background:linear-gradient(145deg,var(--g1),var(--g2));
+  -webkit-backdrop-filter:blur(24px) saturate(190%);backdrop-filter:blur(24px) saturate(190%);
+  border:1px solid var(--gborder);
+  box-shadow:
+    inset 0 1.5px 0 var(--ghi),
+    inset 0 -1px 0 var(--glo),
+    inset 1.5px 0 0 var(--glo),
+    inset -1.5px 0 0 var(--glo),
+    0 14px 40px var(--gshadow);
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .glass{background:var(--bg);filter:none}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .glass{background:#16242b}}
+}
+
+main{max-width:48rem;margin:0 auto;padding:.9rem 1rem 3rem}
+.bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + .6rem);z-index:5;display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.2rem;padding:.5rem .6rem .5rem 1.2rem;border-radius:999px}
+html[dir=rtl] .bar{padding:.5rem 1.2rem .5rem .6rem}
+.brand{font-weight:800;letter-spacing:-.01em}
+.lang{display:flex;border-radius:999px;padding:3px;background:var(--inner2);box-shadow:inset 0 1px 3px rgba(0,0,0,.12)}
+.lang button{font:inherit;font-size:.9rem;border:0;background:none;color:var(--mute);padding:.3rem .95rem;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.lang button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+
+.sheet{border-radius:2rem;padding:clamp(1.4rem,5vw,3rem)}
+h1{font:800 clamp(2rem,6.5vw,3.3rem)/1.1 system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;letter-spacing:-.03em;margin:0 0 .7rem}
+html[lang=ar] h1{line-height:1.4;letter-spacing:0}
+.meta{color:var(--mute);margin:0 0 2rem;font-size:.95rem}
+
+.keys{direction:ltr;display:flex;gap:.6rem;margin:0 0 2.5rem;user-select:none;-webkit-user-select:none}
+.k{font:700 1.15rem/1 system-ui,sans-serif;color:var(--ink);height:3.5rem;min-width:3.5rem;display:grid;place-items:center;padding:0 .8rem;border-radius:1.15rem;cursor:pointer;touch-action:manipulation;
+  background:linear-gradient(160deg,var(--g1),var(--g2));
+  -webkit-backdrop-filter:blur(10px) saturate(180%);backdrop-filter:blur(10px) saturate(180%);
+  border:1px solid var(--gborder);
+  box-shadow:inset 0 1.5px 0 var(--ghi),inset 0 -6px 10px var(--glo),0 6px 14px var(--gshadow);
+  transition:transform .12s cubic-bezier(.3,1.6,.5,1),box-shadow .12s}
+.k.sp{flex:1;font-weight:500;font-size:.9rem;color:var(--mute)}
+.k.on,.k:active{transform:translateY(3px) scale(.965);box-shadow:inset 0 1px 0 var(--ghi),inset 0 -2px 4px var(--glo),0 2px 5px var(--gshadow)}
+
+h2{font-size:1.25rem;letter-spacing:-.01em;margin:2.3rem 0 .5rem}
+p{margin:.5rem 0;max-width:62ch}
+ul{padding-inline-start:1.2rem;margin:.5rem 0}
+li{margin:.55rem 0;max-width:62ch}
+li::marker{color:var(--acc)}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:.7rem 1.5rem;margin:.9rem 0;padding:1.1rem 1.3rem;border-radius:1.4rem;
+  background:var(--inner1);border:1px solid var(--gborder);box-shadow:inset 0 1px 0 var(--ghi)}
+dt{font-weight:700}
+dd{margin:0;color:var(--mute)}
+@media(max-width:34rem){dl{grid-template-columns:1fr;gap:0}dd{margin-bottom:.8rem}dd:last-child{margin-bottom:0}}
+a{color:var(--acc);font-weight:600;text-underline-offset:3px}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--mute);font-size:.9rem}
+@media(prefers-reduced-motion:reduce){.k,.lang button{transition:none}}
+</style>
+</head>
+<body>
+<div class="shape3" aria-hidden="true"></div>
+<main>
+<div class="bar glass">
+  <span class="brand">MAKeyboard</span>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-set="en" aria-pressed="true">English</button>
+    <button type="button" data-set="ar" aria-pressed="false">عربي</button>
+  </div>
+</div>
+
+<div class="sheet glass">
+<h1><span data-l="en">Your typing stays on your phone.</span><span data-l="ar">اللي بتكتبه بيفضل على موبايلك.</span></h1>
+<p class="meta"><span data-l="en">Privacy Policy, last updated 13 October 2026</span><span data-l="ar">سياسة الخصوصية، آخر تحديث: 13 أكتوبر 2026</span></p>
+
+<div class="keys" aria-hidden="true">
+  <div class="k">M</div><div class="k">A</div><div class="k">K</div>
+  <div class="k sp"><span data-l="en">tap me</span><span data-l="ar">tap me</span></div>
+</div>
+
+<h2><span data-l="en">The short version</span><span data-l="ar">الخلاصة</span></h2>
+<p data-l="en">MAKeyboard has no sign-up, and it does not send what you type to any server of ours. Suggestions, autocorrect and the words it learns all work on your device.</p>
+<p data-l="ar">MAKeyboard مفيهوش تسجيل حساب، ومبيبعتش اللي بتكتبه لأي سيرفر بتاعنا. الاقتراحات والتصحيح والكلمات اللي بيتعلمها كله بيشتغل على جهازك.</p>
+
+<h2><span data-l="en">What is stored on your device</span><span data-l="ar">اللي بيتخزن على جهازك</span></h2>
+<p data-l="en">Your settings and themes, the words the keyboard learns, your clipboard history (up to 60 unpinned items), and photos you pick for keys or the background. All of it stays on your phone and is removed when you uninstall the app.</p>
+<p data-l="ar">إعداداتك والثيمات، والكلمات اللي الكيبورد بيتعلمها، وسجل الـ clipboard (لحد 60 عنصر غير مثبّت)، والصور اللي بتختارها للأزرار أو الخلفية. كله محفوظ على موبايلك بس، وبيتمسح لما تمسح التطبيق.</p>
+
+<h2><span data-l="en">When the internet is used</span><span data-l="ar">إمتى بيستخدم الإنترنت</span></h2>
+<ul>
+  <li data-l="en"><b>Translate.</b> Only when you press the translate button, the text you are translating (up to 500 characters) is sent to Google Translate, or to MyMemory if Google fails. Those services have their own privacy policies.</li>
+  <li data-l="ar"><b>الترجمة.</b> بس لما تدوس على زر الترجمة، النص اللي بتترجمه (لحد 500 حرف) بيتبعت لـ Google Translate، ولو فشل بيتبعت لـ MyMemory. الخدمتين دول ليهم سياسة خصوصية خاصة بيهم.</li>
+  <li data-l="en"><b>Updates.</b> The app checks for new versions and shows update alerts through Firebase Cloud Messaging from Google.</li>
+  <li data-l="ar"><b>التحديثات.</b> التطبيق بيشوف لو في إصدار جديد، وبيوصلك تنبيه التحديث عن طريق Firebase Cloud Messaging من Google.</li>
+  <li data-l="en"><b>Background photos.</b> Ready-made photos are downloaded from the developer's server. Like any web request, this shows your IP address to that server.</li>
+  <li data-l="ar"><b>صور الخلفية.</b> الصور الجاهزة بتتحمّل من سيرفر المطوّر، وأي طلب إنترنت زي ده بيظهر فيه عنوان الـ IP بتاعك للسيرفر.</li>
+  <li data-l="en"><b>Voice typing.</b> It opens Android's own speech recognizer. Your audio is handled by that service on your phone (usually Google), not by MAKeyboard.</li>
+  <li data-l="ar"><b>الكتابة بالصوت.</b> بيفتح خدمة التعرف على الكلام اللي في أندرويد. الصوت بتعالجه الخدمة دي على موبايلك (غالبًا Google)، مش MAKeyboard.</li>
+</ul>
+
+<h2><span data-l="en">Permissions</span><span data-l="ar">الصلاحيات</span></h2>
+<dl>
+  <dt><span data-l="en">Internet</span><span data-l="ar">الإنترنت</span></dt><dd><span data-l="en">Translate, update checks, background photos.</span><span data-l="ar">الترجمة، فحص التحديثات، صور الخلفية.</span></dd>
+  <dt><span data-l="en">Microphone</span><span data-l="ar">الميكروفون</span></dt><dd><span data-l="en">Voice typing only.</span><span data-l="ar">للكتابة بالصوت بس.</span></dd>
+  <dt><span data-l="en">Notifications</span><span data-l="ar">الإشعارات</span></dt><dd><span data-l="en">Update alerts.</span><span data-l="ar">تنبيهات التحديث.</span></dd>
+  <dt><span data-l="en">Vibration</span><span data-l="ar">الاهتزاز</span></dt><dd><span data-l="en">Key taps, when you turn on "Enable vibration while typing".</span><span data-l="ar">اهتزاز الأزرار، لما تفعّل "Enable vibration while typing".</span></dd>
+</dl>
+
+<h2><span data-l="en">Children</span><span data-l="ar">الأطفال</span></h2>
+<p data-l="en">MAKeyboard is not aimed at children under 13 and does not knowingly collect personal data from them.</p>
+<p data-l="ar">MAKeyboard مش موجّه للأطفال تحت 13 سنة، ومبيجمعش بيانات شخصية منهم عن قصد.</p>
+
+<h2><span data-l="en">Changes to this policy</span><span data-l="ar">تعديل السياسة</span></h2>
+<p data-l="en">If this policy changes, the new version is posted on this page with a new date.</p>
+<p data-l="ar">لو السياسة اتغيرت، النسخة الجديدة هتتنزل في الصفحة دي بتاريخ جديد.</p>
+
+<h2><span data-l="en">Contact</span><span data-l="ar">التواصل</span></h2>
+<p><span data-l="en">Questions about privacy? Write to</span><span data-l="ar">عندك سؤال عن الخصوصية؟ ابعت على</span> <a href="mailto:m7ashr213@gmail.com">m7ashr213@gmail.com</a></p>
+
+<footer>© MAKeyboard</footer>
+</div>
+</main>
+<script>
+(function(){
+  var root=document.documentElement,btns=document.querySelectorAll('[data-set]');
+  function set(l){
+    root.lang=l;root.dir=l==='ar'?'rtl':'ltr';
+    btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.set===l))});
+    try{localStorage.setItem('mak-lang',l)}catch(e){}
+  }
+  var saved=null;try{saved=localStorage.getItem('mak-lang')}catch(e){}
+  set(saved||((navigator.language||'').slice(0,2)==='ar'?'ar':'en'));
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.set)})});
+  document.querySelectorAll('.k').forEach(function(k){
+    function down(){k.classList.add('on');try{if(navigator.vibrate)navigator.vibrate(35)}catch(e){}}
+    function up(){k.classList.remove('on')}
+    k.addEventListener('pointerdown',down);
+    ['pointerup','pointerleave','pointercancel'].forEach(function(t){k.addEventListener(t,up)});
+  });
+})();
+</script>
+</body>
+</html>
